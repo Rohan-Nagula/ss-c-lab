@@ -9,12 +9,17 @@
 %%
 int yywrap()
 {
-	printf("Character =%d, lines = %d, blanks =%d, words =%d", chars, lines, blanks, words);
+	fprintf(yyout, "charactres %d", chars);
+	fprintf(yyout, "words %d", words);
+	fprintf(yyout, "blanks %d", blanks);
+	fprintf(yyout, "lines %d", lines);
+	
 }
 
 int main(int argc, char* argv[])
 {
 	yyin = fopen(argv[1], "r");
-	yylex();
+	yyout=fopen(argv[2], "w");
+	yyout=yylex();
 	return 0;
 }
